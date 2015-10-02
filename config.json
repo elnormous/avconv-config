@@ -27,8 +27,12 @@
 		{
 			"filters":
 			[
-				"crop": [1280, 720, 0,0],
-				"yadif": [0, -1, 0]
+				{
+					"crop": [1280, 720, 0,0]
+				},
+				{
+					"yadif": [0, -1, 0]
+				}
 			],
 			"output": "[o0]"
 		},
@@ -36,14 +40,16 @@
 			"input": "[o0]",
 			"filters":
 			[
-				"drawtext":
 				{
-					"fontfile": "/usr/share/fonts/dejavu/DejaVuSans.ttf",
-					"text": "%s,%n%N",
-					"x": 200,
-					"y": 50,
-					"fontsize": 24,
-					"fontcolor": "white"
+					"drawtext":
+					{
+						"fontfile": "/usr/share/fonts/dejavu/DejaVuSans.ttf",
+						"text": "%s,%n%N",
+						"x": 200,
+						"y": 50,
+						"fontsize": 24,
+						"fontcolor": "white"
+					}
 				}
 			],
 			"output": "[o0]"
