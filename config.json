@@ -1,7 +1,7 @@
 {
 	"global": {
 		"loglevel": "debug"
-	}
+	},
 	"input":
 	[
 		{
@@ -29,11 +29,11 @@
 			[
 				"crop": [1280, 720, 0,0],
 				"yadif": [0, -1, 0]
-			]
-			"output": "o0"
+			],
+			"output": "[o0]"
 		},
 		{
-			"input": "o0",
+			"input": "[o0]",
 			"filters":
 			[
 				"drawtext":
@@ -46,7 +46,7 @@
 					"fontcolor": "white"
 				}
 			],
-			"output": "o0"
+			"output": "[o0]"
 		}
 	],
 	"output":
