@@ -1,13 +1,24 @@
 {
-	"-analyzeduration": 1,
-	"-f": bmd,
-	"-video_mode": 11,
-	"-instance": 0,
-	"-audio_connection": 2,
-	"-video_connection": 4,
-	"-video_format": 1,
-	"-wallclock": 1,
-	"-i": "default",
+	"input":
+	[
+		{
+			"analyzeduration": 1,
+			"format":
+			{
+				"name": "bmd",
+				"options":
+				{
+					"video_mode": 11,
+					"instance": 0,
+					"audio_connection": 2,
+					"video_connection": 4,
+					"video_format": 1,
+					"wallclock": 1
+				}
+			},
+			"name": "default"
+		}
+	],
 	"-filter_complex":
 	[
 		{
@@ -35,16 +46,43 @@
 			"output": "o0"
 		}
 	],
-	"-c:d": "copy",
-	"-c:v:[o0]": "libx264",
-	"-b:v": "2400k",
-	"-c:a": "libfdk_aac",
-	"-ar": "44100",
-	"-ab": "128k",
-	"-map": "[o0]",
-	"-map": "0:a",
-	"-map": "0:d",
-	"-g": 50,
-	"-r": 25,
-	"-f": "flv rtmp://10.1.11.22:1935/casino/test/wallclock_test_med"
+	"output":
+	[
+		{
+			"encode":
+			[ 
+				{
+					"stream": "d",
+					"codec": "copy"
+				},
+				{
+					"stream": "v:[o0]",
+					"codec": "libx264",
+					"bitrate": "2400k",
+					"gop": 50,
+					"rate": 25
+				},
+				{
+					"stream": "a",
+					"codec": "libfdk_aac",
+					"audiorate": "44100",
+					"bitrate": "128k"
+				}
+			],
+			"map":
+			[
+				"[o0]",
+				"0:a",
+				"0:d"
+			],
+			"mux":
+			{
+				"format" :
+				{
+					"name" : "flv"
+				},
+				"name" : "rtmp://10.1.11.22:1935/casino/test/wallclock_test_med"
+			}
+		}
+	]
 }
