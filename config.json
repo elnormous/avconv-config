@@ -8,9 +8,17 @@
 	"-video_format": 1,
 	"-wallclock": 1,
 	"-i": "default",
-	"-filter_complex": [
-		"crop=1280:720:0:0,yadif=0:-1:0[o0]",
-		"[o0]drawtext=fontfile='/usr/share/fonts/dejavu/DejaVuSans.ttf': text='%s,%n%N': x=200: y=50: fontsize=24: fontcolor=white[o0]"
+	"-filter_complex":
+	[
+		{
+			"crop=1280:720:0:0,yadif=0:-1:0",
+			"output": "o0"
+		},
+		{
+			"input": "o0",
+			"drawtext=fontfile='/usr/share/fonts/dejavu/DejaVuSans.ttf': text='%s,%n%N': x=200: y=50: fontsize=24: fontcolor=white",
+			"output": "o0"
+		}
 	],
 	"-c:d": "copy",
 	"-c:v:[o0]": "libx264",
