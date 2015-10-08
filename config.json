@@ -22,7 +22,7 @@
 			"name": "default"
 		}
 	],
-	"-filter_complex":
+	"filter_complex":
 	[
 		{
 			"filters":
